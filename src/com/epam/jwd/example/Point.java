@@ -1,4 +1,4 @@
-package com.epam.jwd;
+package com.epam.jwd.example;
 
 public class Point {
     private int x;
