@@ -1,10 +1,20 @@
-package com.epam.jwd.example;
+package com.epam.jwd.example.model;
 
-import com.epam.jwd.strategy.Strategy;
+import com.epam.jwd.example.Point;
+import com.epam.jwd.example.strategy.Strategy;
 
 public abstract class Figure {
 
+    Point[] a;
     private Strategy figurePropertiesStrategy;
+
+    public Point[] getArray() {
+        return a;
+    }
+
+    public void setArray(Point[] array) {
+        this.a = array;
+    }
 
     public Strategy getFigurePropertiesStrategy() {
         return figurePropertiesStrategy;
@@ -14,5 +24,5 @@ public abstract class Figure {
         this.figurePropertiesStrategy = figurePropertiesStrategy;
     }
 
-    abstract boolean  mayExist();
+    public abstract boolean  mayExist();
 }

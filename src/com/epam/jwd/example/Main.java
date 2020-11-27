@@ -1,5 +1,9 @@
 package com.epam.jwd.example;
 
+import com.epam.jwd.example.model.Factory;
+import com.epam.jwd.example.model.MultiAngleFigure;
+import com.epam.jwd.example.model.Square;
+import com.epam.jwd.example.model.Triangle;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,6 +16,7 @@ public class Main {
     private static Line[] secondArr = new Line[2];
     private static Triangle[] thirdArr = new Triangle[2];
     private static Square[] fourthArr = new Square[1];
+    private static MultiAngleFigure[] fifthArr = new MultiAngleFigure[2];
 
     public static void main(String[] args) {
         declaration();
@@ -29,61 +34,70 @@ public class Main {
         return false;
     }
 
-    public static void getInfo(){
+    public static void getInfo() {
         getInfoAboutPoints();
 
         for (Line arr : secondArr) {
             getInfoAboutLines(arr);
         }
 
-        for(Triangle arr : thirdArr) {
+        for (Triangle arr : thirdArr) {
             getInfoAboutTriangles(arr);
         }
 
-        for(Square arr : fourthArr) {
+        for (Square arr : fourthArr) {
             getInfoAboutSquare(arr);
+        }
+
+        for (MultiAngleFigure arr : fifthArr) {
+            getInfoAboutMultiAngle(arr);
         }
     }
 
-    public static void declaration(){
+    public static void declaration() {
         for (int i = 0; i < 4; i++) {
             firstArr[i] = new Point();
         }
 
         for (int i = 0; i < 2; i++) {
             secondArr[i] = new Line();
-            thirdArr[i] = new Triangle();
+            thirdArr[i] = new Factory().createNewTriangle();
         }
 
-        fourthArr[0] = new Square();
+        fourthArr[0] = new Factory().createNewSquare();
+
+        fifthArr[0] = new Factory().createFigure(new Point[]{new Point(0, 0), new Point(3, 2),
+                new Point(0, 5), new Point(5, 5), new Point(3, -1)});
+        fifthArr[1] = new Factory().createFigure(new Point[]{new Point(2, 0), new Point(4, 0),
+                new Point(6, 2), new Point(6, 4), new Point(4, 6), new Point(2, 6),
+                new Point(0, 4), new Point(0, 2)});
+
     }
 
-    public static void getInfoAboutPoints(){
-        int i=0;
-        do{
+    public static void getInfoAboutPoints() {
+        int i = 0;
+        do {
             LOGGER.log(Level.INFO, firstArr[i].toString());
             i++;
-        }while (i<4);
+        } while (i < 4);
     }
 
     public static void getInfoAboutLines(Line arr) {
-            if(!samePoints(arr.getArray())) {
-                LOGGER.log(Level.INFO, arr.toString());
-            }
-            else{
-                LOGGER.log(Level.ERROR, "Объект Line не является фигурой <<Линия>>");
-            }
+        if (!samePoints(arr.getArray())) {
+            LOGGER.log(Level.INFO, arr.toString());
+        } else {
+            LOGGER.log(Level.ERROR, "Объект Line не является фигурой <<Линия>>");
+        }
     }
 
     public static void getInfoAboutTriangles(Triangle arr) {
         Point[] array = arr.getArray();
-        if (!samePoints(new Point[]{array[0], array[1]}) && !samePoints(new Point[]{array[1], array[2]}) &&
-                !samePoints(new Point[]{array[0], array[2]})) {
+        if (!samePoints(array)) {
             if (arr.mayExist()) {
                 LOGGER.log(Level.INFO, arr.toString());
                 LOGGER.log(Level.INFO, String.format("Периметр равен %1$.3f",
                         arr.getFigurePropertiesStrategy().perimeter(array)));
-                LOGGER.log(Level.INFO, String.format("Площадь равна равен %1$.3f",
+                LOGGER.log(Level.INFO, String.format("Площадь равна %1$.3f",
                         arr.getFigurePropertiesStrategy().square(array)));
             } else {
                 LOGGER.log(Level.ERROR, "Объект Triangle не может существовать");
@@ -95,20 +109,31 @@ public class Main {
 
     public static void getInfoAboutSquare(Square arr) {
         Point[] array = arr.getArray();
-        if (!samePoints(new Point[]{array[0], array[1]}) && !samePoints(new Point[]{array[0], array[2]}) &&
-                !samePoints(new Point[]{array[0], array[3]}) && !samePoints(new Point[]{array[1], array[2]}) &&
-                !samePoints(new Point[]{array[1], array[3]}) && !samePoints(new Point[]{array[0], array[1]})) {
+        if (!samePoints(array)) {
             if (arr.mayExist()) {
                 LOGGER.log(Level.INFO, arr.toString());
                 LOGGER.log(Level.INFO, String.format("Периметр равен %1$.3f",
                         arr.getFigurePropertiesStrategy().perimeter(array)));
-                LOGGER.log(Level.INFO, String.format("Площадь равна равен %1$.3f",
+                LOGGER.log(Level.INFO, String.format("Площадь равна %1$.3f",
                         arr.getFigurePropertiesStrategy().square(array)));
             } else {
                 LOGGER.log(Level.ERROR, "Объект Square не является квадратом");
             }
         } else {
             LOGGER.log(Level.ERROR, "Объект Square не является фигурой <<Квадрат>>");
+        }
+    }
+
+    public static void getInfoAboutMultiAngle(MultiAngleFigure arr) {
+        Point[] array = arr.getArray();
+        if (!samePoints(array)) {
+            LOGGER.log(Level.INFO, arr.toString());
+            LOGGER.log(Level.INFO, String.format("Периметр равен %1$.3f",
+                    arr.getFigurePropertiesStrategy().perimeter(array)));
+            LOGGER.log(Level.INFO, String.format("Площадь равна %1$.3f",
+                    arr.getFigurePropertiesStrategy().square(array)));
+        } else {
+            LOGGER.log(Level.ERROR, "В объекте MultiAngleFigure есть одинаковые точки");
         }
     }
 }

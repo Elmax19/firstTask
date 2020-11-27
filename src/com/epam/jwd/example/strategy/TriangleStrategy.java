@@ -1,12 +1,24 @@
-package com.epam.jwd.strategy;
+package com.epam.jwd.example.strategy;
 
 import com.epam.jwd.example.Point;
 
-public class triangleStrategy implements Strategy {
+public class TriangleStrategy implements Strategy {
 
     private double x;
     private double y;
     private double z;
+
+    public enum singletonEnum{
+        INSTANCE;
+
+        private final TriangleStrategy strategy = new TriangleStrategy();
+
+        public TriangleStrategy getStrategy(){
+            return this.strategy;
+        }
+    }
+
+
 
     public double getX() {
         return x;

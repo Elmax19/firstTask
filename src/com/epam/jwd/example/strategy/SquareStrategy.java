@@ -1,8 +1,19 @@
-package com.epam.jwd.strategy;
+package com.epam.jwd.example.strategy;
 
 import com.epam.jwd.example.Point;
 
-public class squareStrategy implements Strategy{
+public class SquareStrategy implements Strategy{
+
+    private SquareStrategy(){
+    }
+
+    private static class SingletonHolder{
+        private final static SquareStrategy instance = new SquareStrategy();
+    }
+
+    public static SquareStrategy getInstance(){
+        return SquareStrategy.SingletonHolder.instance;
+    }
 
     @Override
     public double perimeter(Point[] array) {

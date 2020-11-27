@@ -1,4 +1,4 @@
-package com.epam.jwd.strategy;
+package com.epam.jwd.example.strategy;
 
 import com.epam.jwd.example.Point;
 
