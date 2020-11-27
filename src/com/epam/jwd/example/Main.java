@@ -1,9 +1,6 @@
 package com.epam.jwd.example;
 
-import com.epam.jwd.example.model.Factory;
-import com.epam.jwd.example.model.MultiAngleFigure;
-import com.epam.jwd.example.model.Square;
-import com.epam.jwd.example.model.Triangle;
+import com.epam.jwd.example.model.*;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -61,14 +58,14 @@ public class Main {
 
         for (int i = 0; i < 2; i++) {
             secondArr[i] = new Line();
-            thirdArr[i] = new Factory().createNewTriangle();
+            thirdArr[i] = new TriangleFactory().createNewFigure();
         }
 
-        fourthArr[0] = new Factory().createNewSquare();
+        fourthArr[0] = new SquareFactory().createNewFigure();
 
-        fifthArr[0] = new Factory().createFigure(new Point[]{new Point(0, 0), new Point(3, 2),
+        fifthArr[0] = new FigureFactory().createFigure(new Point[]{new Point(0, 0), new Point(3, 2),
                 new Point(0, 5), new Point(5, 5), new Point(3, -1)});
-        fifthArr[1] = new Factory().createFigure(new Point[]{new Point(2, 0), new Point(4, 0),
+        fifthArr[1] = new FigureFactory().createFigure(new Point[]{new Point(2, 0), new Point(4, 0),
                 new Point(6, 2), new Point(6, 4), new Point(4, 6), new Point(2, 6),
                 new Point(0, 4), new Point(0, 2)});
 
