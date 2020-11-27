@@ -2,7 +2,7 @@ package com.epam.jwd.example.model;
 
 import com.epam.jwd.example.Point;
 
-public class SquareFactory implements Factory {
+public class SquareFactory extends Factory {
 
     public Square createNewFigure(){
         return new Square();

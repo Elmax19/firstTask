@@ -2,7 +2,7 @@ package com.epam.jwd.example.model;
 
 import com.epam.jwd.example.Point;
 
-public interface Factory {
-    Figure createNewFigure();
-    Figure createFigure(Point[] arr);
+public abstract class Factory {
+    public abstract Figure createNewFigure();
+    public abstract Figure createFigure(Point[] arr);
 }
