@@ -1,4 +1,6 @@
-package com.epam.jwd.example;
+package com.epam.jwd.example.model;
+
+import java.util.Objects;
 
 public class Point {
     private int x;
@@ -18,16 +20,22 @@ public class Point {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
     public int getY() {
         return y;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point point = (Point) o;
+        return x == point.x &&
+                y == point.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
     @Override

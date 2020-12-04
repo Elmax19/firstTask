@@ -1,8 +1,8 @@
 package com.epam.jwd.example.strategy;
 
-import com.epam.jwd.example.Point;
+import com.epam.jwd.example.model.Point;
 
-public class TriangleStrategy implements Strategy {
+public final class TriangleStrategy implements Strategy {
 
     private double x;
     private double y;
@@ -11,33 +11,19 @@ public class TriangleStrategy implements Strategy {
     public enum singletonEnum{
         INSTANCE;
 
-        private final TriangleStrategy strategy = new TriangleStrategy();
+        private final TriangleStrategy STRATEGY = new TriangleStrategy();
 
         public TriangleStrategy getStrategy(){
-            return this.strategy;
+            return this.STRATEGY;
         }
-    }
-
-
-
-    public double getX() {
-        return x;
     }
 
     public void setX(double x) {
         this.x = x;
     }
 
-    public double getY() {
-        return y;
-    }
-
     public void setY(double y) {
         this.y = y;
-    }
-
-    public double getZ() {
-        return z;
     }
 
     public void setZ(double z) {

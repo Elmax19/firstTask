@@ -1,18 +1,18 @@
 package com.epam.jwd.example.strategy;
 
-import com.epam.jwd.example.Point;
+import com.epam.jwd.example.model.Point;
 
-public class SquareStrategy implements Strategy{
+public final class SquareStrategy implements Strategy{
 
     private SquareStrategy(){
     }
 
     private static class SingletonHolder{
-        private final static SquareStrategy instance = new SquareStrategy();
+        private final static SquareStrategy INSTANCE = new SquareStrategy();
     }
 
     public static SquareStrategy getInstance(){
-        return SquareStrategy.SingletonHolder.instance;
+        return SquareStrategy.SingletonHolder.INSTANCE;
     }
 
     @Override

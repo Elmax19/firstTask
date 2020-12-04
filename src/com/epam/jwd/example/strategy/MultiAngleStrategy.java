@@ -1,15 +1,15 @@
 package com.epam.jwd.example.strategy;
 
-import com.epam.jwd.example.Point;
+import com.epam.jwd.example.model.Point;
 
-public class MultiAngleStrategy implements Strategy {
-    private static final MultiAngleStrategy instance = new MultiAngleStrategy();
+public final class MultiAngleStrategy implements Strategy {
+    private static final MultiAngleStrategy INSTANCE = new MultiAngleStrategy();
 
     private MultiAngleStrategy(){
     }
 
     public static MultiAngleStrategy getInstance(){
-        return instance;
+        return INSTANCE;
     }
 
     @Override

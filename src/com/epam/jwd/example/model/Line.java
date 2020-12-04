@@ -1,4 +1,4 @@
-package com.epam.jwd.example;
+package com.epam.jwd.example.model;
 
 public class Line {
     private Point[] array = new Point[2];

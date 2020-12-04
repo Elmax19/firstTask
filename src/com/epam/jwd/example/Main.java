@@ -23,7 +23,7 @@ public class Main {
     public static boolean samePoints(Point[] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = i + 1; j < array.length; j++) {
-                if (array[i].getX() == array[j].getX() && array[i].getY() == array[j].getY()) {
+                if (array[i].equals(array[j])) {
                     return true;
                 }
             }

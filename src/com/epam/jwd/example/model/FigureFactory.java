@@ -1,7 +1,5 @@
 package com.epam.jwd.example.model;
 
-import com.epam.jwd.example.Point;
-
 public class FigureFactory extends Factory{
 
     @Override
