@@ -1,6 +1,5 @@
 package com.epam.jwd.example.service.impl;
 
-import com.epam.jwd.example.exception.FigureException;
 import com.epam.jwd.example.exception.FigureNotExistException;
 import com.epam.jwd.example.model.Figure;
 import com.epam.jwd.example.service.FigurePostProcessor;

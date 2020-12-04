@@ -6,7 +6,7 @@ public class Triangle extends Figure {
 
     protected Triangle(Point[] arr) {
         this.a = arr;
-        setFigurePropertiesStrategy(new TriangleStrategy());
+        setFigurePropertiesStrategy(TriangleStrategy.singletonEnum.INSTANCE.getStrategy());
     }
 
     @Override
