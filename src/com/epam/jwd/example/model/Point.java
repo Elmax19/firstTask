@@ -3,8 +3,8 @@ package com.epam.jwd.example.model;
 import java.util.Objects;
 
 public class Point {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public Point() {
         this.x = (int) (Math.random() * 20 - 10);

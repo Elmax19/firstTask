@@ -9,7 +9,7 @@ public class FigureExistencePostProcessor implements FigurePostProcessor {
     @Override
     public Figure process(Figure figure) throws FigureNotExistException {
         if (!figure.mayExist()) {
-            throw new FigureNotExistException("Фигура " + figure.toString() +" не может существовать");
+            throw new FigureNotExistException("Фигура " + figure.toString() + " не может существовать");
         }
         return figure;
     }
