@@ -1,19 +1,26 @@
 package com.epam.jwd.example;
 
-import com.epam.jwd.example.model.*;
+import com.epam.jwd.example.model.FigureFactory;
+import com.epam.jwd.example.model.Line;
+import com.epam.jwd.example.model.MultiAngleFigure;
+import com.epam.jwd.example.model.Point;
+import com.epam.jwd.example.model.Square;
+import com.epam.jwd.example.model.SquareFactory;
+import com.epam.jwd.example.model.Triangle;
+import com.epam.jwd.example.model.TriangleFactory;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Main {
 
-    private static final Logger LOGGER = LogManager.getLogger(Main.class);
+    public static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-    private static Point[] firstArr = new Point[4];
-    private static Line[] secondArr = new Line[2];
-    private static Triangle[] thirdArr = new Triangle[2];
-    private static Square[] fourthArr = new Square[1];
-    private static MultiAngleFigure[] fifthArr = new MultiAngleFigure[2];
+    private final static Point[] FIRST_ARR = new Point[4];
+    private final static Line[] SECOND_ARR = new Line[2];
+    private final static Triangle[] THIRD_ARR = new Triangle[2];
+    private final static Square[] FOURTH_ARR = new Square[1];
+    private final static MultiAngleFigure[] FIFTH_ARR = new MultiAngleFigure[2];
 
     public static void main(String[] args) {
         declaration();
@@ -34,38 +41,42 @@ public class Main {
     public static void getInfo() {
         getInfoAboutPoints();
 
-        for (Line arr : secondArr) {
+        for (Line arr : SECOND_ARR) {
             getInfoAboutLines(arr);
         }
 
-        for (Triangle arr : thirdArr) {
-            getInfoAboutTriangles(arr);
+        for (Triangle arr : THIRD_ARR) {
+            if (arr != null) {
+                getInfoAboutTriangles(arr);
+            }
         }
 
-        for (Square arr : fourthArr) {
-            getInfoAboutSquare(arr);
+        for (Square arr : FOURTH_ARR) {
+            if (arr != null) {
+                getInfoAboutSquare(arr);
+            }
         }
 
-        for (MultiAngleFigure arr : fifthArr) {
+        for (MultiAngleFigure arr : FIFTH_ARR) {
             getInfoAboutMultiAngle(arr);
         }
     }
 
     public static void declaration() {
         for (int i = 0; i < 4; i++) {
-            firstArr[i] = new Point();
+            FIRST_ARR[i] = new Point();
         }
 
         for (int i = 0; i < 2; i++) {
-            secondArr[i] = new Line();
-            thirdArr[i] = new TriangleFactory().createNewFigure();
+            SECOND_ARR[i] = new Line();
+            THIRD_ARR[i] = new TriangleFactory().createFigure(new Point[]{new Point(), new Point(), new Point()});
         }
 
-        fourthArr[0] = new SquareFactory().createNewFigure();
+        FOURTH_ARR[0] = new SquareFactory().createFigure(new Point[]{new Point(), new Point(), new Point(), new Point()});
 
-        fifthArr[0] = new FigureFactory().createFigure(new Point[]{new Point(0, 0), new Point(3, 2),
+        FIFTH_ARR[0] = new FigureFactory().createFigure(new Point[]{new Point(0, 0), new Point(3, 2),
                 new Point(0, 5), new Point(5, 5), new Point(3, -1)});
-        fifthArr[1] = new FigureFactory().createFigure(new Point[]{new Point(2, 0), new Point(4, 0),
+        FIFTH_ARR[1] = new FigureFactory().createFigure(new Point[]{new Point(2, 0), new Point(4, 0),
                 new Point(6, 2), new Point(6, 4), new Point(4, 6), new Point(2, 6),
                 new Point(0, 4), new Point(0, 2)});
 
@@ -74,7 +85,7 @@ public class Main {
     public static void getInfoAboutPoints() {
         int i = 0;
         do {
-            LOGGER.log(Level.INFO, firstArr[i].toString());
+            LOGGER.log(Level.INFO, FIRST_ARR[i].toString());
             i++;
         } while (i < 4);
     }
@@ -90,15 +101,11 @@ public class Main {
     public static void getInfoAboutTriangles(Triangle arr) {
         Point[] array = arr.getArray();
         if (!samePoints(array)) {
-            if (arr.mayExist()) {
-                LOGGER.log(Level.INFO, arr.toString());
-                LOGGER.log(Level.INFO, String.format("Периметр равен %1$.3f",
-                        arr.getFigurePropertiesStrategy().perimeter(array)));
-                LOGGER.log(Level.INFO, String.format("Площадь равна %1$.3f",
-                        arr.getFigurePropertiesStrategy().square(array)));
-            } else {
-                LOGGER.log(Level.ERROR, "Объект Triangle не может существовать");
-            }
+            LOGGER.log(Level.INFO, arr.toString());
+            LOGGER.log(Level.INFO, String.format("Периметр равен %1$.3f",
+                    arr.getFigurePropertiesStrategy().perimeter(array)));
+            LOGGER.log(Level.INFO, String.format("Площадь равна %1$.3f",
+                    arr.getFigurePropertiesStrategy().square(array)));
         } else {
             LOGGER.log(Level.ERROR, "Объект Triangle не является фигурой <<Треугольник>>");
         }
@@ -107,15 +114,11 @@ public class Main {
     public static void getInfoAboutSquare(Square arr) {
         Point[] array = arr.getArray();
         if (!samePoints(array)) {
-            if (arr.mayExist()) {
-                LOGGER.log(Level.INFO, arr.toString());
-                LOGGER.log(Level.INFO, String.format("Периметр равен %1$.3f",
-                        arr.getFigurePropertiesStrategy().perimeter(array)));
-                LOGGER.log(Level.INFO, String.format("Площадь равна %1$.3f",
-                        arr.getFigurePropertiesStrategy().square(array)));
-            } else {
-                LOGGER.log(Level.ERROR, "Объект Square не является квадратом");
-            }
+            LOGGER.log(Level.INFO, arr.toString());
+            LOGGER.log(Level.INFO, String.format("Периметр равен %1$.3f",
+                    arr.getFigurePropertiesStrategy().perimeter(array)));
+            LOGGER.log(Level.INFO, String.format("Площадь равна %1$.3f",
+                    arr.getFigurePropertiesStrategy().square(array)));
         } else {
             LOGGER.log(Level.ERROR, "Объект Square не является фигурой <<Квадрат>>");
         }

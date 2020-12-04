@@ -5,21 +5,21 @@ import com.epam.jwd.example.model.Point;
 public final class MultiAngleStrategy implements Strategy {
     private static final MultiAngleStrategy INSTANCE = new MultiAngleStrategy();
 
-    private MultiAngleStrategy(){
+    private MultiAngleStrategy() {
     }
 
-    public static MultiAngleStrategy getInstance(){
+    public static MultiAngleStrategy getInstance() {
         return INSTANCE;
     }
 
     @Override
     public double perimeter(Point[] array) {
-        double rez=0;
+        double rez = 0;
         int n = array.length;
-        for(int i=0;i< array.length- 1;i++){
-            rez+=getDistance(array[i], array[i+1]);
+        for (int i = 0; i < array.length - 1; i++) {
+            rez += getDistance(array[i], array[i + 1]);
         }
-        rez+=getDistance(array[n-1],array[0]);
+        rez += getDistance(array[n - 1], array[0]);
         return rez;
     }
 
@@ -32,7 +32,7 @@ public final class MultiAngleStrategy implements Strategy {
             rez += array[i].getX() * (array[i - 1].getY() - array[i + 1].getY());
         }
         rez += array[n - 1].getX() * (array[n - 2].getY() - array[0].getY());
-        rez/=2;
+        rez /= 2;
         return Math.abs(rez);
     }
 

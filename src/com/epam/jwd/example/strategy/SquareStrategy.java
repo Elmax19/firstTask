@@ -2,16 +2,16 @@ package com.epam.jwd.example.strategy;
 
 import com.epam.jwd.example.model.Point;
 
-public final class SquareStrategy implements Strategy{
+public final class SquareStrategy implements Strategy {
 
-    private SquareStrategy(){
+    private SquareStrategy() {
     }
 
-    private static class SingletonHolder{
+    private static class SingletonHolder {
         private final static SquareStrategy INSTANCE = new SquareStrategy();
     }
 
-    public static SquareStrategy getInstance(){
+    public static SquareStrategy getInstance() {
         return SquareStrategy.SingletonHolder.INSTANCE;
     }
 

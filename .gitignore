@@ -1,4 +1,4 @@
-src/log4j2.xml
+*.xml
 *.iml
 .idea/
 lib/

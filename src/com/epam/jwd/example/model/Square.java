@@ -4,21 +4,21 @@ import com.epam.jwd.example.strategy.SquareStrategy;
 
 public class Square extends Figure {
 
-    protected Square(){
+    protected Square() {
         this.a = new Point[]{new Point(), new Point(), new Point(), new Point()};
         setFigurePropertiesStrategy(SquareStrategy.getInstance());
     }
 
-    protected Square(Point a, Point b, Point c, Point d) {
-        this.a = new Point[]{a, b, c, d};
+    protected Square(Point[] arr) {
+        this.a = arr;
         setFigurePropertiesStrategy(SquareStrategy.getInstance());
     }
 
     @Override
     public boolean mayExist() {
-        Point [] array1 = {a[0], a[2], a[1], a[3]};
-        Point [] array2 = {a[1], a[0], a[2], a[3]};
-        return isSquare(a) || isSquare(array1) || isSquare(array2);
+        Point[] array1 = {a[0], a[2], a[1], a[3]};
+        Point[] array2 = {a[1], a[0], a[2], a[3]};
+        return (isSquare(a) || isSquare(array1) || isSquare(array2));
     }
 
     public boolean isSquare(Point[] array) {
@@ -28,7 +28,7 @@ public class Square extends Figure {
                 getFigurePropertiesStrategy().getDistance(array[2], array[3]));
     }
 
-    public boolean isParallel(Point a, Point b, Point c){
+    public boolean isParallel(Point a, Point b, Point c) {
         return (a.getX() - b.getX()) * (c.getX() - b.getX()) +
                 (a.getY() - b.getY()) * (c.getY() - b.getY()) == 0;
     }

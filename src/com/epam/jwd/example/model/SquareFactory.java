@@ -1,14 +1,22 @@
 package com.epam.jwd.example.model;
 
+import com.epam.jwd.example.Main;
+import com.epam.jwd.example.exception.FigureException;
+import com.epam.jwd.example.service.impl.FigureExistencePostProcessor;
+import org.apache.logging.log4j.Level;
+
 public class SquareFactory extends Factory {
 
-    public Square createNewFigure(){
-        return new Square();
-    }
-
     @Override
-    public Square createFigure(Point[] arr){
-        return new Square(arr[0], arr[1], arr[2], arr[3]);
+    public Square createFigure(Point[] arr) {
+        FigureExistencePostProcessor figure = new FigureExistencePostProcessor();
+        Square square;
+        try {
+            square = (Square) figure.process(new Square(arr));
+        } catch (FigureException e) {
+            Main.LOGGER.log(Level.ERROR, e.getMessage());
+            return null;
+        }
+        return square;
     }
-
 }

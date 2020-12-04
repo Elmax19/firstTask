@@ -4,18 +4,13 @@ import com.epam.jwd.example.strategy.TriangleStrategy;
 
 public class Triangle extends Figure {
 
-    protected Triangle(){
-        this.a = new Point[]{new Point(), new Point(), new Point()};
-        setFigurePropertiesStrategy(TriangleStrategy.singletonEnum.INSTANCE.getStrategy());
-    }
-
-    protected Triangle(Point a, Point b, Point c) {
-        this.a = new Point[]{a, b, c};
+    protected Triangle(Point[] arr) {
+        this.a = arr;
         setFigurePropertiesStrategy(new TriangleStrategy());
     }
 
     @Override
-    public boolean mayExist(){
+    public boolean mayExist() {
         return (a[0].getX() - a[1].getX()) * (a[2].getY() - a[1].getY()) !=
                 (a[0].getY() - a[1].getY()) * (a[2].getX() - a[1].getX());
     }

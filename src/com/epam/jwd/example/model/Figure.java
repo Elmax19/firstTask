@@ -23,5 +23,5 @@ public abstract class Figure {
         this.figurePropertiesStrategy = figurePropertiesStrategy;
     }
 
-    public abstract boolean  mayExist();
+    public abstract boolean mayExist();
 }

@@ -7,8 +7,8 @@ public class Point {
     private int y;
 
     public Point() {
-        this.x  = (int) (Math.random() * 20 - 10);
-        this.y  = (int) (Math.random() * 20 - 10);
+        this.x = (int) (Math.random() * 20 - 10);
+        this.y = (int) (Math.random() * 20 - 10);
     }
 
     public Point(int x, int y) {
@@ -40,6 +40,6 @@ public class Point {
 
     @Override
     public String toString() {
-        return "Point("+this.x+','+this.y+')';
+        return "Point(" + this.x + ',' + this.y + ')';
     }
 }

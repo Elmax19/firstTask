@@ -3,7 +3,7 @@ package com.epam.jwd.example.model;
 public class Line {
     private Point[] array = new Point[2];
 
-    public Line(){
+    public Line() {
         this.array[0] = new Point();
         this.array[1] = new Point();
     }

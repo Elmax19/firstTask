@@ -8,12 +8,12 @@ public final class TriangleStrategy implements Strategy {
     private double y;
     private double z;
 
-    public enum singletonEnum{
+    public enum singletonEnum {
         INSTANCE;
 
         private final TriangleStrategy STRATEGY = new TriangleStrategy();
 
-        public TriangleStrategy getStrategy(){
+        public TriangleStrategy getStrategy() {
             return this.STRATEGY;
         }
     }
@@ -44,12 +44,12 @@ public final class TriangleStrategy implements Strategy {
         setX(getDistance(array[0], array[1]));
         setY(getDistance(array[1], array[2]));
         setZ(getDistance(array[0], array[2]));
-        return x+y+z;
+        return x + y + z;
     }
 
     @Override
     public double square(Point[] array) {
-        double p = perimeter(array)/2;
+        double p = perimeter(array) / 2;
         double rez = p * (p - x) * (p - y) * (p - z);
         return Math.sqrt(rez);
     }
