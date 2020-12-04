@@ -4,12 +4,12 @@ import com.epam.jwd.example.strategy.TriangleStrategy;
 
 public class Triangle extends Figure {
 
-    Triangle(){
+    protected Triangle(){
         this.a = new Point[]{new Point(), new Point(), new Point()};
         setFigurePropertiesStrategy(TriangleStrategy.singletonEnum.INSTANCE.getStrategy());
     }
 
-    Triangle(Point a, Point b, Point c) {
+    protected Triangle(Point a, Point b, Point c) {
         this.a = new Point[]{a, b, c};
         setFigurePropertiesStrategy(new TriangleStrategy());
     }

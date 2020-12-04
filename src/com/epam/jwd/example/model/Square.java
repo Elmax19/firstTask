@@ -4,12 +4,12 @@ import com.epam.jwd.example.strategy.SquareStrategy;
 
 public class Square extends Figure {
 
-    Square(){
+    protected Square(){
         this.a = new Point[]{new Point(), new Point(), new Point(), new Point()};
         setFigurePropertiesStrategy(SquareStrategy.getInstance());
     }
 
-    Square(Point a, Point b, Point c, Point d) {
+    protected Square(Point a, Point b, Point c, Point d) {
         this.a = new Point[]{a, b, c, d};
         setFigurePropertiesStrategy(SquareStrategy.getInstance());
     }
