@@ -11,7 +11,7 @@ public class MultiAngleFigure extends Figure {
 
     @Override
     public boolean mayExist() {
-        return false;
+        return true;
     }
 
     @Override
