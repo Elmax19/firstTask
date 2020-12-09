@@ -1,8 +1,7 @@
-package com.epam.jwd.example.service.impl;
+package com.epam.jwd.example.decorator.impl;
 
+import com.epam.jwd.example.decorator.api.FigurePostProcessor;
 import com.epam.jwd.example.exception.FigureNotExistException;
-import com.epam.jwd.example.model.Figure;
-import com.epam.jwd.example.service.FigurePostProcessor;
 
 public class FigureExistencePostProcessor implements FigurePostProcessor {
     @Override

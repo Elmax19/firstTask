@@ -1,5 +1,6 @@
-package com.epam.jwd.example.model;
+package com.epam.jwd.example.decorator.impl;
 
+import com.epam.jwd.example.Point;
 import com.epam.jwd.example.strategy.MultiAngleStrategy;
 
 public class MultiAngleFigure extends Figure {

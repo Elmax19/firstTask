@@ -1,11 +1,10 @@
 package com.epam.jwd.example;
 
-import com.epam.jwd.example.model.Factory;
-import com.epam.jwd.example.model.Line;
-import com.epam.jwd.example.model.MultiAngleFigure;
-import com.epam.jwd.example.model.Point;
-import com.epam.jwd.example.model.Square;
-import com.epam.jwd.example.model.Triangle;
+import com.epam.jwd.example.decorator.api.FigureFactory;
+import com.epam.jwd.example.decorator.impl.ApplicationContext;
+import com.epam.jwd.example.decorator.impl.MultiAngleFigure;
+import com.epam.jwd.example.decorator.impl.Square;
+import com.epam.jwd.example.decorator.impl.Triangle;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 public class Main {
 
     public static final Logger LOGGER = LogManager.getLogger(Main.class);
+    private static final FigureFactory figureFactory = ApplicationContext.singletonEnum.INSTANCE.createFigureFactory();
 
     private final static Point[] FIRST_ARR = new Point[4];
     private final static Line[] SECOND_ARR = new Line[2];
@@ -57,15 +57,14 @@ public class Main {
 
         for (int i = 0; i < 2; i++) {
             SECOND_ARR[i] = new Line();
-            THIRD_ARR[i] = (Triangle) new Factory().createFigure(new Point[]{new Point(), new Point(), new Point()});
+            THIRD_ARR[i] = (Triangle) figureFactory.createFigure(FigureType.TRIANGLE, new Point[]{new Point(), new Point(), new Point()});
         }
-
-        FOURTH_ARR[0] = (Square) new Factory().createFigure(new Point[]{new Point(0, 0), new Point( 5, 5),
+        FOURTH_ARR[0] = (Square) figureFactory.createFigure(FigureType.SQUARE, new Point[]{new Point(0, 0), new Point(5, 5),
                 new Point(0, 5), new Point(5, 0)});
 
-        FIFTH_ARR[0] = (MultiAngleFigure) new Factory().createFigure(new Point[]{new Point(0, 0), new Point(3, 2),
+        FIFTH_ARR[0] = (MultiAngleFigure) figureFactory.createFigure(FigureType.MULTI_ANGLE_FIGURE, new Point[]{new Point(0, 0), new Point(3, 2),
                 new Point(0, 5), new Point(5, 5), new Point(3, -1)});
-        FIFTH_ARR[1] = (MultiAngleFigure) new Factory().createFigure(new Point[]{new Point(2, 0), new Point(4, 0),
+        FIFTH_ARR[1] = (MultiAngleFigure) figureFactory.createFigure(FigureType.MULTI_ANGLE_FIGURE, new Point[]{new Point(2, 0), new Point(4, 0),
                 new Point(6, 2), new Point(6, 4), new Point(4, 6), new Point(2, 6),
                 new Point(0, 4), new Point(0, 2)});
 

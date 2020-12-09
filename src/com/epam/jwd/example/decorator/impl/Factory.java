@@ -1,8 +1,13 @@
-package com.epam.jwd.example.model;
+package com.epam.jwd.example.decorator.impl;
 
 import com.epam.jwd.example.Main;
+import com.epam.jwd.example.Point;
+import com.epam.jwd.example.decorator.impl.Figure;
+import com.epam.jwd.example.decorator.impl.FigureExistencePostProcessor;
+import com.epam.jwd.example.decorator.impl.MultiAngleFigure;
+import com.epam.jwd.example.decorator.impl.Square;
+import com.epam.jwd.example.decorator.impl.Triangle;
 import com.epam.jwd.example.exception.FigureException;
-import com.epam.jwd.example.service.impl.FigureExistencePostProcessor;
 import org.apache.logging.log4j.Level;
 
 public class Factory {
