@@ -1,4 +1,4 @@
-package com.epam.jwd.example;
+package com.epam.jwd.example.app;
 
 import java.util.Objects;
 

@@ -1,6 +1,6 @@
 package com.epam.jwd.example.decorator.impl;
 
-import com.epam.jwd.example.Point;
+import com.epam.jwd.example.app.Point;
 import com.epam.jwd.example.strategy.Strategy;
 
 public abstract class Figure {

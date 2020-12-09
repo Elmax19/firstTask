@@ -1,6 +1,6 @@
 package com.epam.jwd.example.strategy;
 
-import com.epam.jwd.example.Point;
+import com.epam.jwd.example.app.Point;
 
 public final class TriangleStrategy implements Strategy {
 

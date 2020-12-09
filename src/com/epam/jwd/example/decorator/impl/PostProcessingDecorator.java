@@ -1,12 +1,11 @@
 package com.epam.jwd.example.decorator.impl;
 
-import com.epam.jwd.example.FigureType;
+import com.epam.jwd.example.app.FigureType;
 import com.epam.jwd.example.Main;
-import com.epam.jwd.example.Point;
+import com.epam.jwd.example.app.Point;
 import com.epam.jwd.example.decorator.api.FigureFactory;
 import com.epam.jwd.example.decorator.api.FigurePostProcessor;
 import com.epam.jwd.example.exception.FigureException;
-import com.epam.jwd.example.strategy.TriangleStrategy;
 import org.apache.logging.log4j.Level;
 
 public class PostProcessingDecorator implements FigureFactory {

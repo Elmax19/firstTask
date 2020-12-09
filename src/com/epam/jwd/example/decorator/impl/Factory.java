@@ -1,12 +1,7 @@
 package com.epam.jwd.example.decorator.impl;
 
 import com.epam.jwd.example.Main;
-import com.epam.jwd.example.Point;
-import com.epam.jwd.example.decorator.impl.Figure;
-import com.epam.jwd.example.decorator.impl.FigureExistencePostProcessor;
-import com.epam.jwd.example.decorator.impl.MultiAngleFigure;
-import com.epam.jwd.example.decorator.impl.Square;
-import com.epam.jwd.example.decorator.impl.Triangle;
+import com.epam.jwd.example.app.Point;
 import com.epam.jwd.example.exception.FigureException;
 import org.apache.logging.log4j.Level;
 

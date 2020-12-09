@@ -1,4 +1,4 @@
-package com.epam.jwd.example;
+package com.epam.jwd.example.app;
 
 import com.epam.jwd.example.decorator.api.FigureFactory;
 import com.epam.jwd.example.decorator.impl.ApplicationContext;
