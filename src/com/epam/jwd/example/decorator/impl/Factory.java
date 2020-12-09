@@ -1,6 +1,6 @@
 package com.epam.jwd.example.decorator.impl;
 
-import com.epam.jwd.example.Main;
+import com.epam.jwd.example.app.Main;
 import com.epam.jwd.example.app.Point;
 import com.epam.jwd.example.exception.FigureException;
 import org.apache.logging.log4j.Level;
