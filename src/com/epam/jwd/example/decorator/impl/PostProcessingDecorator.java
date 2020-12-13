@@ -8,10 +8,13 @@ import com.epam.jwd.example.decorator.api.FigurePostProcessor;
 import com.epam.jwd.example.exception.FigureException;
 import org.apache.logging.log4j.Level;
 
+
 public class PostProcessingDecorator implements FigureFactory {
     private final FigurePostProcessor postProcessor = new FigureExistencePostProcessor();
 
+
     private final FigureFactory figureFactory;
+
 
     public PostProcessingDecorator(FigureFactory figureFactory) {
         this.figureFactory = figureFactory;
@@ -19,6 +22,7 @@ public class PostProcessingDecorator implements FigureFactory {
 
     @Override
     public Figure createFigure(FigureType type, Point[] points) {
+
         try {
             Figure figure = figureFactory.createFigure(type, points);
             if (figure != null) {
