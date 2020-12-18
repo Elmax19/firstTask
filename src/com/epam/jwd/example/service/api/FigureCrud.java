@@ -17,6 +17,8 @@ public interface FigureCrud {
 
     Figure find(Figure figure);
 
+    void update(FigureStorage storage, Figure figure, int id);
+
     Figure findById(FigureStorage<?> storage, int id);
 
     Figure findBySpecification(Specification specification);

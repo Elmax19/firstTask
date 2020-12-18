@@ -65,27 +65,35 @@ public class FigureCrudImpl implements FigureCrud {
 
     @Override
     public Figure find(Figure figure) {
-        for (Figure figures : Main.TRIANGLE_FIGURE_STORAGE_STORAGE.getStorage()) {
-            if (figures.equals(figure)) {
-                return figures;
-            }
-        }
-        for (Figure figures : Main.SQUARE_FIGURE_STORAGE_STORAGE.getStorage()) {
-            if (figures.equals(figure)) {
-                return figures;
-            }
-        }
-        for (Figure figures : Main.MULTI_ANGLE_FIGURE_STORAGE.getStorage()) {
-            if (figures.equals(figure)) {
-                return figures;
-            }
+        switch (figure.getArray().length){
+            case 3:
+                for (Triangle figures : Main.TRIANGLE_FIGURE_STORAGE_STORAGE.getStorage()) {
+                    if (figures.equals(figure)) {
+                        return figures;
+                    }
+                }
+                break;
+            case 4:
+                for (Square figures : Main.SQUARE_FIGURE_STORAGE_STORAGE.getStorage()) {
+                    if (figures.equals(figure)) {
+                        return figures;
+                    }
+                }
+                break;
+            default:
+                for (MultiAngleFigure figures : Main.MULTI_ANGLE_FIGURE_STORAGE.getStorage()) {
+                    if (figures.equals(figure)) {
+                        return figures;
+                    }
+                }
+                break;
         }
         return null;
     }
 
     @Override
     public Figure findById(FigureStorage<?> storage, int id) {
-        return (Figure) storage.getStorage().get(id);
+        return storage.getStorage().get(id);
     }
 
     @Override
@@ -143,5 +151,11 @@ public class FigureCrudImpl implements FigureCrud {
             }
         }
         return null;
+    }
+
+    @Override
+    public void update(FigureStorage storage, Figure figure, int id) {
+        storage.getStorage().remove(id);
+        storage.addIntoStorage(figure);
     }
 }

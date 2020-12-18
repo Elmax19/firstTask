@@ -36,15 +36,12 @@ public class Main {
             getInfoAboutLines(arr);
         }
 
-        for (Triangle figure : TRIANGLE_FIGURE_STORAGE_STORAGE.getStorage()) {
-            getInfoAboutFigures(figure);
-        }
-        for (Square figure : SQUARE_FIGURE_STORAGE_STORAGE.getStorage()) {
-            getInfoAboutFigures(figure);
-        }
-        for (MultiAngleFigure figure : MULTI_ANGLE_FIGURE_STORAGE.getStorage()) {
-            getInfoAboutFigures(figure);
-        }
+        TRIANGLE_FIGURE_STORAGE_STORAGE.getStorage().forEach(Main::getInfoAboutFigures);
+        SQUARE_FIGURE_STORAGE_STORAGE.getStorage().forEach(Main::getInfoAboutFigures);
+        MULTI_ANGLE_FIGURE_STORAGE.getStorage().forEach(Main::getInfoAboutFigures);
+
+        FIGURE_CRUD.update(MULTI_ANGLE_FIGURE_STORAGE, MULTI_ANGLE_FIGURE_STORAGE.getStorage().get(0), 1);
+        MULTI_ANGLE_FIGURE_STORAGE.getStorage().forEach(Main::getInfoAboutFigures);
 
         final Specification specification = Specification.builder()
                 .perimeter(20)
