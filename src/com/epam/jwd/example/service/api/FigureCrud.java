@@ -1,23 +1,23 @@
 package com.epam.jwd.example.service.api;
 
+import com.epam.jwd.example.app.FigureType;
 import com.epam.jwd.example.app.Point;
 import com.epam.jwd.example.decorator.impl.Figure;
-import com.epam.jwd.example.service.impl.SearchCriterion;
+import com.epam.jwd.example.service.impl.FigureStorage;
+import com.epam.jwd.example.service.impl.Specification;
 
 import java.util.ArrayList;
 
 public interface FigureCrud {
-    void create(Figure figure);
+    void create(FigureType type, Point[] points);
 
-    void multiCreate(ArrayList<Figure> figures);
+    void multiCreate(FigureType type, ArrayList<Point[]> figures);
 
-    void delete(Figure figure);
+    void delete(FigureType type, Figure figure);
 
     Figure find(Figure figure);
 
-    void update();
+    Figure findById(FigureStorage<?> storage, int id);
 
-    Figure findById(int id);
-
-    Figure findByCriterion(SearchCriterion criterion);
+    Figure findBySpecification(Specification specification);
 }

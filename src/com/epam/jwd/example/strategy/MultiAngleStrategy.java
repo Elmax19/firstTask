@@ -3,7 +3,7 @@ package com.epam.jwd.example.strategy;
 import com.epam.jwd.example.app.Point;
 
 public final class MultiAngleStrategy implements Strategy {
-    private static final MultiAngleStrategy INSTANCE = new MultiAngleStrategy();
+    private final static MultiAngleStrategy INSTANCE = new MultiAngleStrategy();
 
     private MultiAngleStrategy() {
     }
